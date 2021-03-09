@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sol: 1
+  status: MyString
+  img_src: MyString
+  earth_date: MyString
+  earth_date_id: 1
+
+two:
+  sol: 1
+  status: MyString
+  img_src: MyString
+  earth_date: MyString
+  earth_date_id: 1
