@@ -5,7 +5,7 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
       t.string :status
       t.string :img_src
       t.string :earth_date
-      t.integer :earth_date_id
+      t.integer :earthdate_id
 
       t.timestamps
     end
