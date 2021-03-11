@@ -2,7 +2,8 @@ class Api::V1::PhotosController < ApplicationController
 
     def index
         photos = Photo.all
-        render json: photos
+        # render json: photos
+        render json: PhotoSerializer.new(photos)
     end
 
     def create
