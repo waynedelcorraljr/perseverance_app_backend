@@ -10,7 +10,7 @@ class Api::V1::EarthdatesController < ApplicationController
         response = HTTParty.get('https://api.nasa.gov/mars-photos/api/v1/manifests/Perseverance/?api_key=DEMO_KEY')
         ed_json_object_arr = response["photo_manifest"]["photos"]
         ed_json_object_arr.each do |obj|
-            Earthdate.create_with(total_photos: obj["total_photos"]).find_or_create_by(date: obj["earth_date"])
+            Earthdate.find_or_create_by(date: obj["earth_date"], total_photos: obj["total_photos"])
         end
     end
 
