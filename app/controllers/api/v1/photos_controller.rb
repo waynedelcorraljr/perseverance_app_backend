@@ -1,7 +1,7 @@
 class Api::V1::PhotosController < ApplicationController
 
     def index
-        if Earthdate.all.length < self.check_max_ed
+        if Earthdate.all.length < self.check_max_ed || Photo.all.length === 0
             new_stuff = self.call_nasa
             self.create_photos_from_api(new_stuff)
         end
@@ -40,7 +40,7 @@ class Api::V1::PhotosController < ApplicationController
           
         photos_arr.each do |day_arr|
             day_arr.each do |p|
-                Photo.find_or_create_by(sol: p["sol"], status: p["rover"]["status"], img_src: p["img_src"], earth_date: p["earth_date"], earthdate_id: id_arr[dates_arr.find_index(p["earth_date"])])
+                Photo.create_with(likes: 0).find_or_create_by(sol: p["sol"], status: p["rover"]["status"], img_src: p["img_src"], earth_date: p["earth_date"], earthdate_id: id_arr[dates_arr.find_index(p["earth_date"])])
             end
         end
     end
