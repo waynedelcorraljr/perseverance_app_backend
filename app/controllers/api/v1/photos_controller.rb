@@ -2,6 +2,7 @@ class Api::V1::PhotosController < ApplicationController
 
     def index
         self.create_photos_from_api
+        # Photo.all.destroy_all
         photos = Photo.all
         # render json: photos
         render json: PhotoSerializer.new(photos)
@@ -19,15 +20,21 @@ class Api::V1::PhotosController < ApplicationController
     
     def create_photos_from_api
         dates_arr = Earthdate.all.map { |ed| ed.date }
+        id_arr = Earthdate.all.map { |ed| ed.id }
+        photos_arr = []
         dates_arr.each do |date|
-            response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=#{date}&api_key=DEMO_KEY")
-            photos_arr = response["photos"]
-            # byebug
-            photos_arr.each do |p|
-                # ed_id = Earthdate.find_by(date: p["earth_date"]).id
-                # Photo.create_with(sol: p["sol"], status: p["status"], earth_date: p["earth_date"], earthdate_id: ed_id).find_or_create_by(img_src: p["img_src"])
-            end
+            response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=#{date}&api_key=YgYRZocaHcuFq1XghF8eUHRWv3vsK6uRiTMJX1nR")
+            photos_arr << response["photos"]
         end  
+
+        photos_arr.each do |day_arr|
+            day_arr.each do |p|
+                new_photo = Photo.where(sol: p["sol"], status: p["rover"]["status"], img_src: p["img_src"], earth_date: p["earth_date"]).first_or_initialize
+                new_photo.earthdate_id = id_arr[dates_arr.find_index(new_photo.earth_date)]
+                new_photo.save
+            end
+        end
+        # byebug
     end
     
     private
