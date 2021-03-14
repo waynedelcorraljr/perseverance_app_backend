@@ -1,10 +1,9 @@
 class Api::V1::EarthdatesController < ApplicationController
 
     def index
-        nasa = self.call_nasa_ed
-        self.create_earthdates_from_api(nasa)
         earthdates = Earthdate.all
         render json: EarthdateSerializer.new(earthdates)
+        self.check_for_new
     end
 
     def call_nasa_ed
