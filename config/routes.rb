@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
 namespace :api do
   namespace :v1 do
-    resources :photos, only: [:index, :create]
+    resources :photos, only: [:index, :update]
     resources :earthdates, only: [:index]
   end
 end

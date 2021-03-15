@@ -6,19 +6,25 @@ class Api::V1::PhotosController < ApplicationController
         render json: PhotoSerializer.new(photos)
     end
 
-    def create
-        photo = Photo.new(photo_params)
-        if photo.save
-            render json: photo, status: :created
-        else
-            render json: { errors: photos.errors.full_messages}, status: :unprocessable_entity
-        end
-    end
+    # def create
+    #     photo = Photo.new(photo_params)
+    #     if photo.save
+    #         render json: photo, status: :created
+    #     else
+    #         render json: { errors: photos.errors.full_messages}, status: :unprocessable_entity
+    #     end
+    # end
     
+    def update
+        byebug
+        photo = Photo.find_by(id: params[:id])
+        photo.update(photo_params)
+    end
+
     private
 
     def photo_params
-        params.require(:photo).permit(:sol, :status, :img_src, :earth_date, :earthdate_id)
+        params.require(:photo).permit(:id, :sol, :status, :img_src, :earth_date, :earthdate_id)
     end
 
 
