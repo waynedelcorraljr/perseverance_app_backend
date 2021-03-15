@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
         dates_arr = Earthdate.all.map { |ed| ed.date }
         photos_arr = []
         dates_arr.each do |date|
-            response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=#{date}&api_key=YgYRZocaHcuFq1XghF8eUHRWv3vsK6uRiTMJX1nR")
+            response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/rovers/perseverance/photos?earth_date=#{date}&api_key=#{ENV['NASA_KEY']}")
             photos_arr << response["photos"]
         end
         photos_arr
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
     end
 
     def check_max_ed
-        response = HTTParty.get('https://api.nasa.gov/mars-photos/api/v1/manifests/Perseverance/?api_key=DEMO_KEY')
+        response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/manifests/Perseverance/?api_key=#{ENV['NASA_KEY']}")
         ed_json_object_arr = response["photo_manifest"]["photos"]
         ed_json_object_arr.length
     end
