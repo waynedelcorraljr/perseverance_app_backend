@@ -16,9 +16,13 @@ class Api::V1::PhotosController < ApplicationController
     # end
     
     def update
-        byebug
+        # byebug
         photo = Photo.find_by(id: params[:id])
-        photo.update(photo_params)
+        if params[:photo][:likes] == "empty" # "empty" implies empty like button has been pressed.
+            photo.update(likes: photo.likes += 1)
+        else
+            photo.update(likes: photo.likes -= 1)
+        end
     end
 
     private
