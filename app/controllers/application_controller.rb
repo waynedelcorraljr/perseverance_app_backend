@@ -22,8 +22,12 @@ class ApplicationController < ActionController::API
 
     def check_max_ed
         response = HTTParty.get("https://api.nasa.gov/mars-photos/api/v1/manifests/Perseverance/?api_key=#{ENV['NASA_KEY']}")
-        ed_json_object_arr = response["photo_manifest"]["photos"]
-        ed_json_object_arr.length
+        if response["photo_manifest"]["photos"]
+            ed_json_object_arr = response["photo_manifest"]["photos"]
+            ed_json_object_arr.length
+        else
+            Earthdate.all.length
+        end
     end
 
     def check_for_new
