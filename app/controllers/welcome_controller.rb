@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
     def index
-        render :action => 'welcome/index'
+      render :index 
     end
 end
