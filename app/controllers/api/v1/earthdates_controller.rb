@@ -1,9 +1,9 @@
 class Api::V1::EarthdatesController < ApplicationController
 
     def index
+        self.check_for_new
         earthdates = Earthdate.all
         render json: EarthdateSerializer.new(earthdates)
-        self.check_for_new
     end
 
     def call_nasa_ed
