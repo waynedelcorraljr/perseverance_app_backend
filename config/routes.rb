@@ -8,5 +8,7 @@ namespace :api do
   end
 end
 
+root 'welcome#index'
+
 
 end
