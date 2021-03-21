@@ -22,6 +22,8 @@
 
 ### Deployment instructions
 - run `rails server`
+
+###### these are the API endpoints, navigate back to frontend repo to view in GUI.
 - visit http://localhost:3000/api/v1/earthdates and http://localhost:3000/api/v1/photos
 
 #### Frontend Repo
