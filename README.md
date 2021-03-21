@@ -20,5 +20,5 @@
 
 ### Deployment instructions
 - run `rails server`
-- visit `http://localhost:3000/api/v1/earthdates` and `http://localhost:3000/api/v1/photos`
+- visit http://localhost:3000/api/v1/earthdates and http://localhost:3000/api/v1/photos
 * ...
