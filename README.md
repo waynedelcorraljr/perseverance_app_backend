@@ -1,23 +1,24 @@
 # README
 
-* Ruby version
+### Ruby version
 - 2.6.6
 
-* Rails version
+### Rails version
 - 6.0.3
 
 ## Setup instructions
 
+### Local Install
 - clone repo
 - cd root directory
 
-* Database creation
+### Database creation
 - run `rails db:create`
 
-* Database initialization
+### Database initialization
 - run `rails db:migrate`
 
-* Deployment instructions
+### Deployment instructions
 - run `rails server`
 - visit `http://localhost:3000/api/v1/earthdates` and `http://localhost:3000/api/v1/photos`
 * ...
