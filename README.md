@@ -12,6 +12,7 @@
 ### Local Install
 - clone repo
 - cd root directory
+- run `bundle install`
 
 ### Database creation
 - run `rails db:create`
