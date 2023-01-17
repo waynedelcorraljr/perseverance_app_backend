@@ -28,3 +28,6 @@
 
 # Ignore environment file with NASA key.
 .env
+
+#Ignore Rubymiine util file
+.idea/
