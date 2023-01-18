@@ -1,7 +1,7 @@
 class Api::V1::PhotosController < ApplicationController
 
     def index
-        self.check_for_new
+        Photo.check_for_new
         photos = Photo.all
         render json: PhotoSerializer.new(photos)
     end
