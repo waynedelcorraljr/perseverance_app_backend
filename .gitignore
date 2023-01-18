@@ -29,5 +29,8 @@
 # Ignore environment file with NASA key.
 .env
 
+#Ignore DS_Store
+.DS_Store
+
 #Ignore Rubymiine util file
 .idea/

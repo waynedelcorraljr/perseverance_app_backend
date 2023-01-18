@@ -1,5 +1,5 @@
 # README
-- backend API app to collect the Perserverance Mars Rover's photos for viewing.
+- API collecting the Perserverance Mars Rover's photos for viewing.
 
 ### Ruby version
 - 3.0.0
