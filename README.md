@@ -2,10 +2,10 @@
 - backend API app to collect the Perserverance Mars Rover's photos for viewing.
 
 ### Ruby version
-- 2.6.6
+- 3.0.0
 
 ### Rails version
-- 6.0.3
+- 7.0.4
 
 ## Setup instructions
 
