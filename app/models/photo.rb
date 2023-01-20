@@ -1,10 +1,6 @@
 class Photo < ApplicationRecord
     belongs_to :earthdate
 
-    def self.check_for_new
-        CheckForNewJob.perform_later
-    end
-
     def self.call_nasa_for_photos(starting_index)
         @dates_arr = Earthdate.all.pluck(:date)[starting_index..-1]
 
