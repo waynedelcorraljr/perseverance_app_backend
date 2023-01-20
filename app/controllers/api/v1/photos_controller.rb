@@ -1,13 +1,12 @@
 class Api::V1::PhotosController < ApplicationController
 
     def index
-        Photo.check_for_new
+        CheckForNewJob.perform_later
         photos = Photo.all
         render json: PhotoSerializer.new(photos)
     end
     
     def update
-        # byebug
         photo = Photo.find_by(id: params[:id])
         if params[:photo][:likes] == "empty" # "empty" implies empty like button has been pressed.
             photo.update(likes: photo.likes += 1)
